@@ -11,7 +11,7 @@ inp2.seek(0)
 pastGroups = list(inp2.read().splitlines())
 inp.close()
 inp2.close()
-
+groups = []
 def checkGroup(group):
     if group[0] == group[1]:
         return False
@@ -41,11 +41,10 @@ for x in range(len(studentList) / 2):
     print "Group %i:  %s and %s" %(x +1, group[0], group[1])
     studentList.remove(group[0])
     studentList.remove(group[1])
-    pastGroups.append(group)
+    groups.append(group)
 
 with open("pastGroups.txt",'a') as app:
-    for x in range(len(pastGroups)):
-        app.write(str(pastGroups[x]) + "\n")
+    app.seek(0)
+    for x in range(len(groups)):
+        app.write(str(groups[x]) + "\n")
 app.close()
-# inp2.write(pastGroups)
-# inp2.close()
